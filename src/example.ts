@@ -12,7 +12,9 @@ async function main() {
 
     const blog2 = await blogRepo.findOne(
         {  },
-        { title: 1 },
+        // si on met des projections, seuls les projections seront retournés
+        { },
+        // si on met des populates, le type de retour ajoutera les champs populés
         {
             // attention, lean: false ne marchera pas comme attendu car le typage de mongoose est mal fait
             // du coup j'ai ouvert une issue lol
@@ -35,5 +37,5 @@ async function main() {
         }
     );
 
-    blog2;
+    blog2?.title
 }
